@@ -51,10 +51,9 @@ module.exports.file = function(req,res) {
         console.log("fileA_Data",fileA_Data.length)
 
         fs.writeFile(__dirname + "/../uploads/FileC.tsv", fileA_Data.join(('\n')), (err) => {
-          if (err) throw res.send("Not Uploaded");
+          if (err) return res.send("Not Uploaded");
           fileHandler.uploadFile("FileC.tsv");
           res.send("Successfully Uploaded");
-
 
           nodemailer.createTestAccount((err, account) => {
             // create reusable transporter object using the default SMTP transport
