@@ -14,7 +14,11 @@ module.exports.file = function(req,res) {
   request('http://upsailgroup.herokuapp.com/Service/firebase/FileA.txt', function (error, response, fileA_Res) {
     // res.send(fileAData);
     console.log("__dirname",__dirname)
-    fs.readFile(__dirname + './../files/FileB.csv', 'utf8', function(err, data) {
+    fs.readFile(__dirname + '/../files/FileB.csv', 'utf8', function(err, data) {
+      if(err) {
+        console.log("err",err,data)
+        return err;
+      }
       fileB_Content = data.split("\n");
       fileB_keys = fileB_Content.splice(0, 1)[0].split(",");
       fileB_Content.forEach(item => {
@@ -50,7 +54,7 @@ module.exports.file = function(req,res) {
           if (err) throw res.send("Not Uploaded");
           fileHandler.uploadFile("resultFile3.tsv");
           res.send("Successfully Uploaded");
-          
+
 
           nodemailer.createTestAccount((err, account) => {
             // create reusable transporter object using the default SMTP transport
