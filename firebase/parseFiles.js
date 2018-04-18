@@ -50,9 +50,9 @@ module.exports.file = function(req,res) {
 
         console.log("fileA_Data",fileA_Data.length)
 
-        fs.writeFile(__dirname + "/../uploads/resultFile3.tsv", fileA_Data.join(('\n')), (err) => {
+        fs.writeFile(__dirname + "/../uploads/FileC.tsv", fileA_Data.join(('\n')), (err) => {
           if (err) throw res.send("Not Uploaded");
-          fileHandler.uploadFile("resultFile3.tsv");
+          fileHandler.uploadFile("FileC.tsv");
           res.send("Successfully Uploaded");
 
 
@@ -69,13 +69,13 @@ module.exports.file = function(req,res) {
             // setup email data with unicode symbols
             let mailOptions = {
               from: 'mailerabhi111@gmail.com', // sender address
-              to: 'shashank@techinvento.com', // list of receivers
+              to: 'shashanksmf@outlook.com', // list of receivers
               subject: 'Upload Status', // Subject line
               text: '', // plain text body
               html: 'Hi,'
               +'<br />'
               +'<br />'
-              +'Total amout of uploaded data is '+fileA_Data.length+' records.'
+              +'FileC has been created with '+fileA_Data.length+' records.'
               +'<br />'
               +'<br />'
               +'Thank you' // html body
